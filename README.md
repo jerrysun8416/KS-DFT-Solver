@@ -20,15 +20,15 @@ A self-consistent Kohn-Sham Density Functional Theory (DFT) solver for atomic sy
 ### Kohn-Sham Equations
 The solver implements the radial Kohn-Sham equations in atomic units:
 
-```
-[-1/2 d²/dr² + l(l+1)/(2r²) + V_eff(r)] u_nl(r) = E_nl u_nl(r)
-```
+$$
+\left[-\frac{1}{2}\frac{d^2}{dr^2} + \frac{l(l+1)}{2r^2} + V_{\text{eff}}(r)\right] u_{nl}(r) = E_{nl} u_{nl}(r)
+$$
 
 where:
-- `u_nl(r) = r R_nl(r)` is the radial wavefunction
-- `V_eff = V_Hartree + V_xc - Z/r` is the effective Kohn-Sham potential
-- `V_xc` uses LDA with Perdew-Zunger parametrization
-- Boundary conditions: `u_nl(0) = 0`, `u_nl(∞) = 0`
+- $u_{nl}(r) = r R_{nl}(r)$ is the radial wavefunction
+- $V_{\text{eff}} = V_{\text{Hartree}} + V_{\text{xc}} - \frac{Z}{r}$ is the effective Kohn-Sham potential
+- $V_{\text{xc}}$ uses LDA with Perdew-Zunger parametrization
+- Boundary conditions: $u_{nl}(0) = 0$, $u_{nl}(\infty) = 0$
 
 ### Numerical Methods
 - **Numerov Algorithm**: 4th-order accurate finite difference method on logarithmic grid
@@ -38,9 +38,9 @@ where:
 - **Density Mixing**: 50% linear mixing for stable SCF convergence
 
 ### Total Energy Calculation
-```
-E_tot = Σ_nl N_nl ε_nl - E_Hartree + E_xc - ∫ n(r) V_xc(r) dr
-```
+$$
+E_{\text{tot}} = \sum_{nl} N_{nl} \varepsilon_{nl} - E_{\text{Hartree}} + E_{\text{xc}} - \int n(\mathbf{r}) V_{\text{xc}}(\mathbf{r}) d\mathbf{r}
+$$
 
 ## Requirements
 
